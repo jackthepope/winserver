@@ -1519,7 +1519,7 @@ let apps = {
     },
     // webapp vscode, bilibili
     webapps: {
-        apps: ['vscode', 'minecraft', 'photoshop'],
+        apps: ['vscode', 'minecraft', 'crossyroad', 'photoshop'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1541,6 +1541,14 @@ let apps = {
         },
         load: () => {
             $('#win-minecraft')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+        }
+    },
+    crossyroad: {
+        init: () => {
+            return null;
+        },
+        load: () => {
+            $('#win-crossyroad')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     photoshop: {
@@ -3209,13 +3217,13 @@ function pinapp(id, name, command) {
 
 // png 格式的图标在此备注，否则以 标识+.svg 的名称自动检索
 let icon = {
-    minecraft: 'https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png',
-    photoshop: 'https://cdn2.steamgriddb.com/icon/f95b0d66a5c300fb374e8af7a3e651f2.png',
+    minecraft: 'minecraft.png',
+    crossyroad: 'crossyroad.png',
+    photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
     // run: 'run.png',
     // whiteboard: 'whiteboard.png',
-    taskmgr: 'taskmgr.png'
 };
 function geticon(name) {
     if (icon[name]) return icon[name];
