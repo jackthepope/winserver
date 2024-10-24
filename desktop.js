@@ -1519,7 +1519,7 @@ let apps = {
     },
     // webapp vscode, bilibili
     webapps: {
-        apps: ['vscode', 'minecraft', 'crossyroad', 'photoshop'],
+        apps: ['vscode', 'minecraft', 'photoshop'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1541,14 +1541,6 @@ let apps = {
         },
         load: () => {
             $('#win-minecraft')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
-        }
-    },
-    crossyroad: {
-        init: () => {
-            return null;
-        },
-        load: () => {
-            $('#win-crossyroad')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     photoshop: {
@@ -3218,7 +3210,6 @@ function pinapp(id, name, command) {
 // png 格式的图标在此备注，否则以 标识+.svg 的名称自动检索
 let icon = {
     minecraft: 'minecraft.png',
-    crossyroad: 'crossyroad.png',
     photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
