@@ -1,12 +1,5 @@
 'use strict';
 
-/*
-
-Windows 12 网页版
-    GitHub: tjy-gitnub/win12
-
-*/
-
 console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
 
 
@@ -3209,12 +3202,13 @@ function pinapp(id, name, command) {
 
 // png 格式的图标在此备注，否则以 标识+.svg 的名称自动检索
 let icon = {
-    minecraft: 'minecraft.png',
-    photoshop: 'photoshop.png',
+    minecraft: 'icon/minecraft.png',
+    photoshop: 'icon/photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
     // run: 'run.png',
     // whiteboard: 'whiteboard.png',
+    taskmgr: 'taskmgr.png'
 };
 function geticon(name) {
     if (icon[name]) return icon[name];
@@ -4301,4 +4295,4 @@ function setupGlobalKey(){
         }
     });
 }
-setupGlobalKey();
+setupGlobalKey()
