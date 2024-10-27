@@ -1510,9 +1510,9 @@ let apps = {
             apps.whiteboard.ctx.clearRect(0, 0, apps.whiteboard.canvas.width, apps.whiteboard.canvas.height);
         }
     },
-    // webapp vscode, bilibili
+    // webapp vscode,
     webapps: {
-        apps: ['vscode', 'minecraft', 'photoshop'],
+        apps: ['vscode', 'minecraft', 'crossyroad', 'photoshop'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1536,161 +1536,20 @@ let apps = {
             $('#win-minecraft')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
+    crossyroad: {
+        init: () => {
+            return null;
+        },
+        load: () => {
+            $('#win-crossyroad')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+        }
+    },
     photoshop: {
         init: () => {
             return null;
         },
         load: () => {
             $('#win-photoshop')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.photopea.com" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
-        }
-    },
-    defender: {
-        init: () => {
-            return null;
-        },
-        load: () => {
-            var chart = $('#chart')[0].getContext('2d'),
-                gradient = chart.createLinearGradient(0, 0, 0, 450);
-            gradient.addColorStop(0, 'rgba(0, 199, 214, 0.32)');
-            gradient.addColorStop(0.3, 'rgba(0, 199, 214, 0.1)');
-            gradient.addColorStop(1, 'rgba(0, 199, 214, 0)');
-            var data = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                datasets: [{
-                    label: 'Number of virus attacks',
-                    backgroundColor: gradient,
-                    pointBackgroundColor: '#00c7d6',
-                    borderWidth: 1,
-                    borderColor: '#0e1a2f',
-                    data: [60, 45, 80, 30, 35, 55, 25, 80, 40, 50, 80, 50]
-                }]
-            };
-            var options = {
-                responsive: true,
-                maintainAspectRatio: true,
-                animation: {
-                    easing: 'easeInOutQuad',
-                    duration: 520
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: '#5e6a81'
-                        },
-                        gridLines: {
-                            color: 'rgba(200, 200, 200, 0.08)',
-                            lineWidth: 1
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: '#5e6a81'
-                        }
-                    }]
-                },
-                elements: {
-                    line: {
-                        tension: 0.4
-                    }
-                },
-                legend: {
-                    display: false
-                },
-                point: {
-                    backgroundColor: '#00c7d6'
-                },
-                tooltips: {
-                    titleFontFamily: 'Poppins',
-                    backgroundColor: 'rgba(0,0,0,0.4)',
-                    titleFontColor: 'white',
-                    caretSize: 5,
-                    cornerRadius: 2,
-                    xPadding: 10,
-                    yPadding: 10
-                }
-            };
-            var chartInstance = new Chart(chart, {
-                type: 'line',
-                data: data,
-                options: options
-            });
-        }
-    },
-    camera: {
-        init: () => {
-            if (!localStorage.getItem('camera')) {
-                showwin('camera-notice');
-                return null;
-            }
-            if (localStorage.getItem('camera')) {
-                apps.camera.streaming = false;
-                apps.camera.video = $('#win-camera video')[0];
-                apps.camera.canvas = $('#win-camera canvas')[0];
-                apps.camera.context = apps.camera.canvas.getContext('2d');
-                apps.camera.context.fillStyle = '#aaa';
-                apps.camera.downloadLink = $('#win-camera a')[0];
-                // apps.camera.control = document.querySelector('#win-camera>.control')
-                navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-                    .then(stream => {
-                        apps.camera.video.srcObject = stream;
-                        apps.camera.video.play();
-                    })
-                    .catch(() => {
-                        hidewin('camera');
-                    });
-                apps.camera.video.addEventListener('canplay', () => {
-                    if (!apps.camera.streaming) {
-                        apps.camera.aspectRatio = apps.camera.video.videoWidth / apps.camera.video.videoHeight;
-                        apps.camera.canvas.width = apps.camera.video.videoWidth;
-                        apps.camera.canvas.height = apps.camera.video.videoHeight;
-                        apps.camera.windowResizeObserver = new ResizeObserver(apps.camera.resize);
-                        apps.camera.windowResizeObserver.observe($('.window.camera')[0], { box: 'border-box' });
-                        apps.camera.streaming = true;
-                    }
-                });
-            }
-            else {
-                hidewin('camera');
-            }
-        },
-        clearCanvas: () => {
-            apps.camera.context.fillRect(0, 0, canvas.width, canvas.height);
-        },
-        takePhoto: () => {
-            apps.camera.context.drawImage(apps.camera.video, 0, 0, apps.camera.canvas.width, apps.camera.canvas.height);
-            apps.camera.downloadLink.href = apps.camera.canvas.toDataURL('image/png');
-            apps.camera.downloadLink.download = 'photo.png';
-            apps.camera.downloadLink.click();
-        },
-        notice: () => {
-            if (!localStorage.getItem('camera')) {
-                showwin('camera-notice');
-            }
-            else {
-                openapp('camera');
-            }
-        },
-        resize: () => {
-            let w = $('#win-camera')[0].offsetWidth,
-                h = $('#win-camera')[0].offsetHeight;
-            if (w / apps.camera.aspectRatio <= h) {
-                if (!$('#win-camera').hasClass('v')) {
-                    $('#win-camera').removeClass('h');
-                    $('#win-camera').addClass('v');
-                }
-            }
-            else if (w / apps.camera.aspectRatio >= h) {
-                if (!$('#win-camera').hasClass('h')) {
-                    $('#win-camera').removeClass('v');
-                    $('#win-camera').addClass('h');
-                }
-            }
-        },
-        remove: () => {
-            apps.camera.video.srcObject.getTracks().forEach((t) => {
-                t.stop();
-            });
-            apps.camera.video.srcObject = null;
         }
     },
     explorer: {
@@ -1700,8 +1559,8 @@ let apps = {
             apps.explorer.newtab();
             // apps.explorer.reset();
             apps.explorer.Process_Of_Select = '';
-            apps.explorer.is_use = 0;//千万不要删除它，它依托bug运行
-            apps.explorer.is_use2 = 0;//千万不要删除它，它依托bug运行
+            apps.explorer.is_use = 0;
+            apps.explorer.is_use2 = 0;
             apps.explorer.old_name = '';
             apps.explorer.clipboard = null;
             document.addEventListener('keydown', function (event) {
@@ -3200,23 +3059,21 @@ function pinapp(id, name, command) {
     $('#s-m-r>.pinned>.apps').append(`<a class='a sm-app enable ${id}' onclick='${command}';hide_startmenu();' oncontextmenu='return showcm(event,\"smapp\",[\"${id}\",\"${name}\"])'><img src='icon/${geticon(id)}'><p>${name}</p></a>`);
 }
 
-// png 格式的图标在此备注，否则以 标识+.svg 的名称自动检索
+// png
 let icon = {
     minecraft: 'minecraft.png',
+    crossyroad: 'crossyroad.png',
     photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
     // run: 'run.png',
     // whiteboard: 'whiteboard.png',
-    taskmgr: 'taskmgr.png'
 };
 function geticon(name) {
     if (icon[name]) return icon[name];
     else return name + '.svg';
 }
 
-// 应用与窗口方法
-/* 基础功能支持，非须勿改 */
 function openapp(name) {
     if (taskmgrTasks.findIndex(elt => elt.link == name) > -1 && apps.taskmgr.tasks.findIndex(elt => elt.link == name) == -1) {
         apps.taskmgr.tasks.splice(apps.taskmgr.tasks.length, 0, taskmgrTasks.find(elt => elt.link == name));
