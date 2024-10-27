@@ -19,13 +19,8 @@
 	<link rel="stylesheet" href="apps/style/edge.css">
 	<link rel="stylesheet" href="apps/style/camera.css">
 	<link rel="stylesheet" href="apps/style/whiteboard.css">
-	<link rel="stylesheet" href="apps/style/taskmgr.css">
 	<link rel="stylesheet" href="apps/style/msstore.css">
 	<link rel="stylesheet" href="widgets.css">
-	<!-- 掌声欢迎 Copilot 的 css 引入(bs -->
-	<link rel="stylesheet" href="apps/style/copilot.css">
-	<!--  掌声欢迎 语音识别输入法 的 css 引入(bs -->
-	<link rel="stylesheet" href="apps/style/recognition.css">
 	
 	<link rel="manifest" href="pwa/manifest.json">
 	<link rel="shortcut icon" href="./pwa/logo.png" type="image/x-icon">
@@ -173,10 +168,6 @@
 					<img src="icon/edge.svg">
 					<p>Microsoft Edge</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['camera', 'Camera'])" onclick="apps.camera.notice();hide_startmenu()">
-					<img src="icon/camera.svg">
-					<p>Camera</p>
-				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['python', 'Python 3.10.2'])" onclick="openapp('python');hide_startmenu()">
 					<img src="icon/python.svg">
 					<p>Python 3.10.2</p>
@@ -191,8 +182,16 @@
 				</a>
 				<p class="text">Games</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['minecraft', 'Minecraft'])" onclick="openapp('minecraft');hide_startmenu();">
-					<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png">
+					<img src="icon/minecraft.png">
 					<p>Minecraft</p>
+				</a>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['crossyroad', 'Crossy Road'])" onclick="openapp('crossyroad');hide_startmenu();">
+					<img src="icon/crossyroad.png">
+					<p>Crossy Road</p>
+				</a>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['cuttherope', 'Cut the Rope'])" onclick="openapp('crossyroad');hide_startmenu();">
+					<img src="icon/cuttherope.png">
+					<p>Cut the Rope</p>
 				</a>
 				<p class="text">Web Applications</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['vscode', 'Visual Studio Code'])" onclick="openapp('vscode');hide_startmenu();">
@@ -200,7 +199,7 @@
 					<p>Visual Studio Code</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['photoshop', 'Photoshop'])" onclick="openapp('photoshop');hide_startmenu();">
-					<img src="https://cdn2.steamgriddb.com/icon/f95b0d66a5c300fb374e8af7a3e651f2.png">
+					<img src="icon/photoshop.png">
 					<p>Photoshop</p>
 				</a>
 			</list>			
@@ -1912,7 +1911,7 @@
 	<div class="window minecraft webapp">
 		<div class="resize-bar"></div>
 		<div class="titbar">
-			<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png" class="icon">
+			<img src="/icon/minecraft.png" class="icon">
 			<p>Minecraft</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('minecraft')"><i class="bi bi-x-lg"></i></a>
@@ -1921,10 +1920,46 @@
 			</div>
 		</div>
 		<div class="loadback">
-			<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png" class="icon">
+			<img src="/icon/minecraft.png" class="icon">
 		</div>
 		<div class="content" id="win-minecraft">
 			<!-- <iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
+		</div>
+	</div>
+	<div class="window crossyroad webapp">
+		<div class="resize-bar"></div>
+		<div class="titbar">
+			<img src="icon/crossyroad.png" class="icon">
+			<p>Crossy Road</p>
+			<div>
+				<a class="a wbtg red" onclick="hidewin('crossyroad')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('crossyroad')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('crossyroad')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="loadback">
+			<img src="icon/crossyroad.png" class="icon">
+		</div>
+		<div class="content" id="win-crossyroad">
+			<!-- <iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
+		</div>
+	</div>
+	<div class="window cuttherope webapp">
+		<div class="resize-bar"></div>
+		<div class="titbar">
+			<img src="icon/cuttherope.png" class="icon">
+			<p>Crossy Road</p>
+			<div>
+				<a class="a wbtg red" onclick="hidewin('cuttherope')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('cuttherope')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('cuttherope')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="loadback">
+			<img src="icon/cuttherope.png" class="icon">
+		</div>
+		<div class="content" id="win-cuttherope">
+			<!-- <iframe src="https://coolubg.github.io/coolubg-list/cut-the-rope" frameborder="0" style="width: 1024px; height: 576px;" loading="lazy"></iframe> -->
 		</div>
 	</div>
 	<div class="window photoshop webapp">
