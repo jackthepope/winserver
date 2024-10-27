@@ -6,7 +6,7 @@ console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-imag
 
 // 后端服务器
 // loadlang();
-const server = 'http://win12server.freehk.svipss.top/';
+const server = '';
 const pages = {
     'get-title': '', // 获取标题
 };
