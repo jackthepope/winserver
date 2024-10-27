@@ -3202,8 +3202,8 @@ function pinapp(id, name, command) {
 
 // png 格式的图标在此备注，否则以 标识+.svg 的名称自动检索
 let icon = {
-    minecraft: 'icon/minecraft.png',
-    photoshop: 'icon/photoshop.png',
+    minecraft: 'minecraft.png',
+    photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
     // run: 'run.png',
