@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
+console.log('background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
 
 
 
@@ -1512,7 +1512,7 @@ let apps = {
     },
     // webapp vscode,
     webapps: {
-        apps: ['vscode', 'minecraft', 'crossyroad', 'photoshop'],
+        apps: ['vscode', 'minecraft', 'tv', 'crossyroad', 'photoshop'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1544,12 +1544,20 @@ let apps = {
             $('#win-crossyroad')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
-    photoshop: {
+    crossyroad: {
         init: () => {
             return null;
         },
         load: () => {
-            $('#win-photoshop')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.photopea.com" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+            $('#win-crossyroad')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+        }
+    },
+    tv: {
+        init: () => {
+            return null;
+        },
+        load: () => {
+            $('#win-tv')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://jamesradio.neocities.org/tv/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     explorer: {
@@ -3063,6 +3071,7 @@ function pinapp(id, name, command) {
 let icon = {
     minecraft: 'minecraft.png',
     crossyroad: 'crossyroad.png',
+    tv: 'tv.png',
     photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
