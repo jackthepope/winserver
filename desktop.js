@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
+console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
 
 
 
@@ -1409,105 +1409,6 @@ let apps = {
                 $(elt).attr('d', tmp);
                 console.log($(elt).attr('d'));
             }
-        }
-    },
-    whiteboard: {
-        canvas: null,
-        ctx: null,
-        windowResizeObserver: null,
-        color: 'red',
-        init: () => {
-            apps.whiteboard.ctx.lineJoin = 'round';
-            apps.whiteboard.ctx.lineCap = 'round';
-            apps.whiteboard.changeColor(apps.whiteboard.color);
-            if ($(':root').hasClass('dark')) {
-                $('.window.whiteboard>.titbar>p').text('Blackboard');
-            } else {
-                $('.window.whiteboard>.titbar>p').text('Whiteboard');
-            }
-        },
-        changeColor: (color) => {
-            apps.whiteboard.color = color;
-            if (color == 'eraser') {
-                apps.whiteboard.ctx.strokeStyle = 'black';
-                apps.whiteboard.ctx.lineWidth = 35;
-                apps.whiteboard.ctx.globalCompositeOperation = 'destination-out';
-            }
-            else {
-                apps.whiteboard.ctx.strokeStyle = color;
-                apps.whiteboard.ctx.globalCompositeOperation = 'source-over';
-                apps.whiteboard.ctx.lineWidth = 8;
-            }
-        },
-        changePen: function () {
-            const pens = $('#win-whiteboard>.toolbar>.tools>*');
-            for (const elt of pens) {
-                elt.classList.remove('active');
-            }
-            this.classList.add('active');
-            apps.whiteboard.changeColor(this.dataset.color);
-        },
-        load: () => {
-            apps.whiteboard.canvas = $('#win-whiteboard>canvas')[0];
-            apps.whiteboard.ctx = apps.whiteboard.canvas.getContext('2d');
-            apps.whiteboard.windowResizeObserver = new ResizeObserver(apps.whiteboard.resize);
-            apps.whiteboard.windowResizeObserver.observe($('.window.whiteboard')[0], { box: 'border-box' });
-        },
-        resize: () => {
-            try {
-                const imgData = apps.whiteboard.ctx.getImageData(0, 0, apps.whiteboard.canvas.width, apps.whiteboard.canvas.height);
-                apps.whiteboard.canvas.width = $('#win-whiteboard')[0].clientWidth;
-                apps.whiteboard.canvas.height = $('#win-whiteboard')[0].clientHeight;
-                apps.whiteboard.ctx.putImageData(imgData, 0, 0);
-            }
-            catch {
-                apps.whiteboard.canvas.width = $('#win-whiteboard')[0].clientWidth;
-                apps.whiteboard.canvas.height = $('#win-whiteboard')[0].clientHeight;
-            }
-            apps.whiteboard.init();
-        },
-        draw: (e) => {
-            let offsetX, offsetY, left = $('#win-whiteboard')[0].getBoundingClientRect().left, top = $('#win-whiteboard')[0].getBoundingClientRect().top;
-            if (e.type.match('mouse')) {
-                offsetX = e.clientX - left, offsetY = e.clientY - top;
-            }
-            else if (e.type.match('touch')) {
-                offsetX = e.touches[0].clientX - left, offsetY = e.touches[0].clientY - top;
-            }
-            apps.whiteboard.ctx.beginPath();
-            apps.whiteboard.ctx.moveTo(offsetX, offsetY);
-            page.onmousemove = apps.whiteboard.drawing;
-            page.ontouchmove = apps.whiteboard.drawing;
-            page.onmouseup = apps.whiteboard.up;
-            page.ontouchend = apps.whiteboard.up;
-            page.ontouchcancel = apps.whiteboard.up;
-        },
-        drawing: (e) => {
-            let offsetX, offsetY, left = $('#win-whiteboard')[0].getBoundingClientRect().left, top = $('#win-whiteboard')[0].getBoundingClientRect().top;
-            if (e.type.match('mouse')) {
-                offsetX = e.clientX - left, offsetY = e.clientY - top;
-            }
-            else if (e.type.match('touch')) {
-                offsetX = e.touches[0].clientX - left, offsetY = e.touches[0].clientY - top;
-            }
-            apps.whiteboard.ctx.lineTo(offsetX, offsetY);
-            apps.whiteboard.ctx.stroke();
-        },
-        up: () => {
-            apps.whiteboard.ctx.stroke();
-            page.onmousemove = null;
-            page.ontouchmove = null;
-            page.onmouseup = null;
-            page.ontouchend = null;
-            page.ontouchcancel = null;
-        },
-        download: () => {
-            const url = apps.whiteboard.canvas.toDataURL();
-            $('#win-whiteboard>a.download')[0].href = url;
-            $('#win-whiteboard>a.download')[0].click();
-        },
-        delete: () => {
-            apps.whiteboard.ctx.clearRect(0, 0, apps.whiteboard.canvas.width, apps.whiteboard.canvas.height);
         }
     },
     // webapp vscode,
@@ -3076,7 +2977,6 @@ let icon = {
     vscode: 'vscode.png',
     // python: 'python.png',
     // run: 'run.png',
-    // whiteboard: 'whiteboard.png',
 };
 function geticon(name) {
     if (icon[name]) return icon[name];
