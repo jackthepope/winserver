@@ -17,8 +17,15 @@
 	<link rel="stylesheet" href="apps/style/notepad.css">
 	<link rel="stylesheet" href="apps/style/terminal.css">
 	<link rel="stylesheet" href="apps/style/edge.css">
+	<link rel="stylesheet" href="apps/style/camera.css">
+	<link rel="stylesheet" href="apps/style/whiteboard.css">
+	<link rel="stylesheet" href="apps/style/taskmgr.css">
 	<link rel="stylesheet" href="apps/style/msstore.css">
 	<link rel="stylesheet" href="widgets.css">
+	<!-- 掌声欢迎 Copilot 的 css 引入(bs -->
+	<link rel="stylesheet" href="apps/style/copilot.css">
+	<!--  掌声欢迎 语音识别输入法 的 css 引入(bs -->
+	<link rel="stylesheet" href="apps/style/recognition.css">
 	
 	<link rel="manifest" href="pwa/manifest.json">
 	<link rel="shortcut icon" href="./pwa/logo.png" type="image/x-icon">
@@ -166,6 +173,10 @@
 					<img src="icon/edge.svg">
 					<p>Microsoft Edge</p>
 				</a>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['camera', 'Camera'])" onclick="apps.camera.notice();hide_startmenu()">
+					<img src="icon/camera.svg">
+					<p>Camera</p>
+				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['python', 'Python 3.10.2'])" onclick="openapp('python');hide_startmenu()">
 					<img src="icon/python.svg">
 					<p>Python 3.10.2</p>
@@ -174,18 +185,14 @@
 					<img src="icon/terminal.svg">
 					<p>Terminal</p>
 				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['tv', 'Films & TV'])" onclick="openapp('tv');hide_startmenu();">
-					<img src="icon/tv.png">
-					<p>Films & TV</p>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['whiteboard', 'Whiteboard'])" onclick="openapp('whiteboard');hide_startmenu();">
+					<img src="icon/whiteboard.svg">
+					<p>Whiteboard</p>
 				</a>
 				<p class="text">Games</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['minecraft', 'Minecraft'])" onclick="openapp('minecraft');hide_startmenu();">
-					<img src="icon/minecraft.png">
+					<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png">
 					<p>Minecraft</p>
-				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['crossyroad', 'Crossy Road'])" onclick="openapp('crossyroad');hide_startmenu();">
-					<img src="icon/crossyroad.png">
-					<p>Crossy Road</p>
 				</a>
 				<p class="text">Web Applications</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['vscode', 'Visual Studio Code'])" onclick="openapp('vscode');hide_startmenu();">
@@ -193,7 +200,7 @@
 					<p>Visual Studio Code</p>
 				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['photoshop', 'Photoshop'])" onclick="openapp('photoshop');hide_startmenu();">
-					<img src="icon/photoshop.png">
+					<img src="https://cdn2.steamgriddb.com/icon/f95b0d66a5c300fb374e8af7a3e651f2.png">
 					<p>Photoshop</p>
 				</a>
 			</list>			
@@ -254,6 +261,10 @@
 						<img src="icon/calc.svg">
 						<p>Calculator</p>
 					</a>
+					<a class="a sm-app enable camera" onclick="apps.camera.notice();hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['camera', 'Camera'])">
+						<img src="icon/camera.svg">
+						<p>Camera</p>
+					</a>
 					<a class="a sm-app enable explorer" onclick="openapp('explorer');hide_startmenu();" oncontextmenu="return showcm(event,'smapp',['explorer','File Explorer'])">
 						<img src="icon/explorer.svg">
 						<p>File Explorer</p>
@@ -274,7 +285,6 @@
 						<img src="icon/terminal.svg">
 						<p>Terminal</p>
 					</a>
-				</a>
 				</div>			
 			</div>
 			<div class="tuijian">
@@ -1303,10 +1313,6 @@
 				<!-- Time @Junchen Yi 2023-9-17 -->
 <div class="cnt time">
     <p class="title">Time and Language</p>
-    <div class="settingTimeItem">
-        <p class="settingTimeTitle">Current Device Time:</p>
-        <span class="settingTime"></span>
-    </div>
     <div class="setting-list">
         <a>
             <icon></icon>
@@ -1899,28 +1905,10 @@
 			<!-- <iframe src="https://github1s.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
 		</div>
 	</div>
-	<div class="window tv webapp">
-		<div class="resize-bar"></div>
-		<div class="titbar">
-			<img src="icon/tv.png" class="icon">
-			<p>Films & TV</p>
-			<div>
-				<a class="a wbtg red" onclick="hidewin('tv')"><i class="bi bi-x-lg"></i></a>
-				<a class="a wbtg max" onclick="maxwin('tv')"><i class="bi bi-app"></i></a>
-				<a class="a wbtg" onclick="minwin('tv')"><i class="bi bi-dash-lg"></i></a>
-			</div>
-		</div>
-		<div class="loadback">
-			<img src="icon/tv.png" class="icon">
-		</div>
-		<div class="content" id="win-tv">
-			<!-- <iframe src="https://jamesradio.neocities.org/tv" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
-		</div>
-	</div>
 	<div class="window minecraft webapp">
 		<div class="resize-bar"></div>
 		<div class="titbar">
-			<img src="icon/minecraft.png" class="icon">
+			<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png" class="icon">
 			<p>Minecraft</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('minecraft')"><i class="bi bi-x-lg"></i></a>
@@ -1929,28 +1917,10 @@
 			</div>
 		</div>
 		<div class="loadback">
-			<img src="icon/minecraft.png" class="icon">
+			<img src="https://cdn2.steamgriddb.com/icon/9e4d3382089cddc44b20a225706d76a3.png" class="icon">
 		</div>
 		<div class="content" id="win-minecraft">
 			<!-- <iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
-		</div>
-	</div>
-	<div class="window crossyroad webapp">
-		<div class="resize-bar"></div>
-		<div class="titbar">
-			<img src="icon/crossyroad.png" class="icon">
-			<p>Crossy Road</p>
-			<div>
-				<a class="a wbtg red" onclick="hidewin('crossyroad')"><i class="bi bi-x-lg"></i></a>
-				<a class="a wbtg max" onclick="maxwin('crossyroad')"><i class="bi bi-app"></i></a>
-				<a class="a wbtg" onclick="minwin('crossyroad')"><i class="bi bi-dash-lg"></i></a>
-			</div>
-		</div>
-		<div class="loadback">
-			<img src="icon/crossyroad.png" class="icon">
-		</div>
-		<div class="content" id="win-crossyroad">
-			<!-- <iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
 		</div>
 	</div>
 	<div class="window photoshop webapp">
@@ -2025,6 +1995,98 @@
 			</div>
 		</div>
 	</div>
+	<div class="window whiteboard">
+		<div class="resize-bar"></div>
+		<div class="titbar">
+			<img src="icon/whiteboard.svg" class="icon">
+			<p>Whiteboard</p>
+			<div>
+				<a class="a wbtg red" onclick="hidewin('whiteboard')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('whiteboard')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('whiteboard')"><i class="bi bi-dash-lg"></i></a>
+				<a class="a wbtg" onclick="apps.whiteboard.download()"><i class="bi bi-download"></i></a>
+			</div>
+		</div>
+		<div class="loadback">
+			<img src="icon/whiteboard.svg" class="icon">
+		</div>
+		<div class="content" id="win-whiteboard">
+			<a class="download" href="" download="Picture.png"></a>
+			<canvas onmousedown="apps.whiteboard.draw(event);" ontouchstart="apps.whiteboard.draw(event);"></canvas>
+			<div class="toolbar">
+				<div class="tools">
+					<div class="pen1 active" onclick="apps.whiteboard.changePen.call(this)" data-color="red">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="red"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="pen2" onclick="apps.whiteboard.changePen.call(this)" data-color="orange">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="orange"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="pen3" onclick="apps.whiteboard.changePen.call(this)" data-color="yellow">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="yellow"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="pen4" onclick="apps.whiteboard.changePen.call(this)" data-color="green">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="green"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="pen5" onclick="apps.whiteboard.changePen.call(this)" data-color="blue">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="blue"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="pen6" onclick="apps.whiteboard.changePen.call(this)" data-color="purple">
+						<svg xmlns="https://www.w3.org/2000/svg" width="76" height="75" viewBox="0 0 760 950"
+							color="#e92a2a">
+							<path
+								d="M120 881c0-155 96-575 144-630 7-9 25-48 40-88 31-82 50-104 71-82 14 15 81 162 120 264 51 136 105 412 105 542v63h-30c-30 0-30-1-30-55v-55H180v55c0 54 0 55-30 55h-30v-69zm343-98l107-6v-44c0-84-95-447-122-464-15-10-148-12-172-3-27 10-114 328-123 452l-6 72h105c58 0 153-3 211-7zm-89-588c-4-8-10-15-15-15s-9 7-9 15 7 15 15 15c9 0 12-6 9-15z"
+								fill="#020202"></path>
+							<path fill="purple"
+								d="M150 880v-70h420v140H150v-70zM305 213c10-42 47-123 55-123 9 0 60 112 60 134 0 13-11 16-61 16h-61l7-27z">
+							</path>
+						</svg>
+					</div>
+					<div class="eraser" onclick="apps.whiteboard.changePen.call(this)" data-color="eraser">
+						<img src="apps/icons/whiteboard/marker.png" height="70">
+					</div>
+					<div class="delete" onclick="apps.whiteboard.delete()">
+						<img src="apps/icons/whiteboard/delete.png" height="60">
+					</div>
 				</div>
 			</div>
 		</div>
