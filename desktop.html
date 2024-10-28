@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="apps/style/notepad.css">
 	<link rel="stylesheet" href="apps/style/terminal.css">
 	<link rel="stylesheet" href="apps/style/edge.css">
-	<link rel="stylesheet" href="apps/style/camera.css">
 	<link rel="stylesheet" href="apps/style/whiteboard.css">
 	<link rel="stylesheet" href="apps/style/msstore.css">
 	<link rel="stylesheet" href="widgets.css">
@@ -176,6 +175,10 @@
 					<img src="icon/terminal.svg">
 					<p>Terminal</p>
 				</a>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['tv', 'Films & TV'])" onclick="openapp('tv');hide_startmenu();">
+					<img src="icon/tv.png">
+					<p>Films & TV</p>
+				</a>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['whiteboard', 'Whiteboard'])" onclick="openapp('whiteboard');hide_startmenu();">
 					<img src="icon/whiteboard.svg">
 					<p>Whiteboard</p>
@@ -188,10 +191,6 @@
 				<a oncontextmenu="return showcm(event, 'smlapp', ['crossyroad', 'Crossy Road'])" onclick="openapp('crossyroad');hide_startmenu();">
 					<img src="icon/crossyroad.png">
 					<p>Crossy Road</p>
-				</a>
-				<a oncontextmenu="return showcm(event, 'smlapp', ['cuttherope', 'Cut the Rope'])" onclick="openapp('crossyroad');hide_startmenu();">
-					<img src="icon/cuttherope.png">
-					<p>Cut the Rope</p>
 				</a>
 				<p class="text">Web Applications</p>
 				<a oncontextmenu="return showcm(event, 'smlapp', ['vscode', 'Visual Studio Code'])" onclick="openapp('vscode');hide_startmenu();">
@@ -284,6 +283,10 @@
 						<img src="icon/terminal.svg">
 						<p>Terminal</p>
 					</a>
+					<a oncontextmenu="return showcm(event, 'smlapp', ['terminal', 'Terminal'])" onclick="openapp('terminal');hide_startmenu();">
+					<img src="icon/terminal.svg">
+					<p>Terminal</p>
+				</a>
 				</div>			
 			</div>
 			<div class="tuijian">
@@ -1908,10 +1911,28 @@
 			<!-- <iframe src="https://github1s.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
 		</div>
 	</div>
+	<div class="window tv webapp">
+		<div class="resize-bar"></div>
+		<div class="titbar">
+			<img src="icon/tv.png" class="icon">
+			<p>Films & TV</p>
+			<div>
+				<a class="a wbtg red" onclick="hidewin('tv')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('tv')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('tv')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="loadback">
+			<img src="icon/tv.png" class="icon">
+		</div>
+		<div class="content" id="win-tv">
+			<!-- <iframe src="https://jamesradio.neocities.org/tv" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
+		</div>
+	</div>
 	<div class="window minecraft webapp">
 		<div class="resize-bar"></div>
 		<div class="titbar">
-			<img src="/icon/minecraft.png" class="icon">
+			<img src="icon/minecraft.png" class="icon">
 			<p>Minecraft</p>
 			<div>
 				<a class="a wbtg red" onclick="hidewin('minecraft')"><i class="bi bi-x-lg"></i></a>
@@ -1920,7 +1941,7 @@
 			</div>
 		</div>
 		<div class="loadback">
-			<img src="/icon/minecraft.png" class="icon">
+			<img src="icon/minecraft.png" class="icon">
 		</div>
 		<div class="content" id="win-minecraft">
 			<!-- <iframe src="https://jamesradio.neocities.org/mc" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
@@ -1942,24 +1963,6 @@
 		</div>
 		<div class="content" id="win-crossyroad">
 			<!-- <iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
-		</div>
-	</div>
-	<div class="window cuttherope webapp">
-		<div class="resize-bar"></div>
-		<div class="titbar">
-			<img src="icon/cuttherope.png" class="icon">
-			<p>Crossy Road</p>
-			<div>
-				<a class="a wbtg red" onclick="hidewin('cuttherope')"><i class="bi bi-x-lg"></i></a>
-				<a class="a wbtg max" onclick="maxwin('cuttherope')"><i class="bi bi-app"></i></a>
-				<a class="a wbtg" onclick="minwin('cuttherope')"><i class="bi bi-dash-lg"></i></a>
-			</div>
-		</div>
-		<div class="loadback">
-			<img src="icon/cuttherope.png" class="icon">
-		</div>
-		<div class="content" id="win-cuttherope">
-			<!-- <iframe src="https://coolubg.github.io/coolubg-list/cut-the-rope" frameborder="0" style="width: 1024px; height: 576px;" loading="lazy"></iframe> -->
 		</div>
 	</div>
 	<div class="window photoshop webapp">
