@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
+console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
 
 
 
@@ -209,125 +209,125 @@ let cms = {
         ['<i class="bi bi-arrow-counterclockwise"></i> 重启', 'window.location=\'reload.html\''],
     ],
     'smapp': [
-        arg => {
-            return ['<i class="bi bi-window"></i> 打开', `openapp('${arg[0]}');hide_startmenu();`];
-        },
-        arg => {
-            return ['<i class="bi bi-link-45deg"></i> 在桌面创建链接', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
-        },
-        arg => {
-            return ['<i class="bi bi-x"></i> 取消固定', `$('#s-m-r>.pinned>.apps>.sm-app.${arg[0]}').remove()`];
-        }
-    ],
-    'smlapp': [
-        arg => {
-            return ['<i class="bi bi-window"></i> 打开', `openapp('${arg[0]}');hide_startmenu();`];
-        },
-        arg => {
-            return ['<i class="bi bi-link-45deg"></i> 在桌面创建链接', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
-        },
-        arg => {
-            return ['<i class="bi bi-pin-angle"></i> 固定到开始菜单', 'pinapp(\'' + arg[0] + '\', \'' + arg[1] + '\', \'openapp(&quot;' + arg[0] + '&quot;);hide_startmenu();\')'];
-        }
-    ],
-    'msgupdate': [
-        ['<i class="bi bi-layout-text-window-reverse"></i> 查看详细', `openapp('about');if($('.window.about').hasClass('min'))
-        minwin('about');$('#win-about>.about').removeClass('show');$('#win-about>.update').addClass('show');
-        $('#win-about>.update>div>details:first-child').attr('open','open')`],
-        ['<i class="bi bi-box-arrow-right"></i> 关闭', '$(\'.msg.update\').removeClass(\'show\')']
-    ],
-    'explorer.folder': [
-        arg => {
-            return ['<i class="bi bi-folder2-open"></i> 打开', `apps.explorer.goto('${arg}')`];
-        },
-        arg => {
-            return ['<i class="bi bi-arrow-up-right-square"></i> 在新标签页中打开', `apps.explorer.newtab('${arg}');`];
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-trash3"></i> 删除', `apps.explorer.del('${arg}')`];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-files"></i> 复制', `apps.explorer.copy_or_cut('${arg}','copy')`];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-scissors"></i> 剪切', `apps.explorer.copy_or_cut('${arg}','cut')`];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-input-cursor-text"></i> 重命名', `apps.explorer.rename('${arg}')`];
-            return 'null';
-        }
-    ],
-    'explorer.file': [
-        arg => {
-            return ['<i class="bi bi-folder2-open"></i> 打开（目前毛用没有）', ''];
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-trash3"></i> 删除', `apps.explorer.del('${arg}')`];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text')[0].innerHTML != 'This PC')
-                return ['<i class="bi bi-files"></i> 复制', `apps.explorer.copy_or_cut('${arg}','copy')`];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-scissors"></i> 剪切', `apps.explorer.copy_or_cut('${arg}','cut')`];
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-input-cursor-text"></i> 重命名', `apps.explorer.rename('${arg}')`];
-            return 'null';
-        }
-    ],
-    'explorer.content': [
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-file-earmark-plus"></i> 新建文件', 'apps.explorer.add($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'新建文本文档.txt\')'];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-folder-plus"></i> 新建文件夹', 'apps.explorer.add($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'新建文件夹\',type=\'files\')'];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-file-earmark-arrow-down"></i> 粘贴', 'apps.explorer.paste($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'新建文件夹\',type=\'files\')'];
-            return 'null';
-        },
-        arg => {
-            if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
-                return ['<i class="bi bi-arrow-clockwise"></i> 刷新', 'apps.explorer.goto($(\'#win-explorer>.path>.tit\')[0].dataset.path, false)'];
-            return ['<i class="bi bi-arrow-clockwise"></i> 刷新', 'apps.explorer.reset()'];
-        }
-    ],
-    'explorer.tab': [
-        arg => {
-            return ['<i class="bi bi-x"></i> 关闭标签页', `m_tab.close('explorer',${arg})`];
-        }
-    ],
-    'edge.tab': [
-        arg => {
-            return ['<i class="bi bi-pencil-square"></i> 命名标签页', `apps.edge.c_rename(${arg})`];
-        },
-        arg => {
-            return ['<i class="bi bi-x"></i> 关闭标签页', `m_tab.close('edge',${arg})`];
-        }
-    ],
-    'taskmgr.processes': [
-        arg => {
-            return ['<i class="bi bi-x"></i> 结束任务', `apps.taskmgr.taskkill('${arg}')`];
-        }
-    ]
+    arg => {
+        return ['<i class="bi bi-window"></i> Open', `openapp('${arg[0]}');hide_startmenu();`];
+    },
+    arg => {
+        return ['<i class="bi bi-link-45deg"></i> Create Shortcut', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
+    },
+    arg => {
+        return ['<i class="bi bi-x"></i> Unpin', `$('#s-m-r>.pinned>.apps>.sm-app.${arg[0]}').remove()`];
+    }
+],
+'smlapp': [
+    arg => {
+        return ['<i class="bi bi-window"></i> Open', `openapp('${arg[0]}');hide_startmenu();`];
+    },
+    arg => {
+        return ['<i class="bi bi-link-45deg"></i> Create Shortcut', 'var s=`<div class=\'b\' ondblclick=openapp(\'' + arg[0] + '\')  ontouchstart=openapp(\'' + arg[0] + '\') appname=\'' + arg[0] + '\'><img src=\'icon/' + geticon(arg[0]) + '\'><p>' + arg[1] + '</p></div>`;$(\'#desktop\').append(s);desktopItem[desktopItem.length]=s;addMenu();saveDesktop();'];
+    },
+    arg => {
+        return ['<i class="bi bi-pin-angle"></i> Pin to Start Menu', 'pinapp(\'' + arg[0] + '\', \'' + arg[1] + '\', \'openapp(&quot;' + arg[0] + '&quot;);hide_startmenu();\')'];
+    }
+],
+'msgupdate': [
+    ['<i class="bi bi-layout-text-window-reverse"></i> View Details', `openapp('about');if($('.window.about').hasClass('min'))
+    minwin('about');$('#win-about>.about').removeClass('show');$('#win-about>.update').addClass('show');
+    $('#win-about>.update>div>details:first-child').attr('open','open')`],
+    ['<i class="bi bi-box-arrow-right"></i> Close', '$(\'.msg.update\').removeClass(\'show\')']
+],
+'explorer.folder': [
+    arg => {
+        return ['<i class="bi bi-folder2-open"></i> Open', `apps.explorer.goto('${arg}')`];
+    },
+    arg => {
+        return ['<i class="bi bi-arrow-up-right-square"></i> Open in New Tab', `apps.explorer.newtab('${arg}');`];
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-trash3"></i> Delete', `apps.explorer.del('${arg}')`];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-files"></i> Copy', `apps.explorer.copy_or_cut('${arg}','copy')`];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-scissors"></i> Cut', `apps.explorer.copy_or_cut('${arg}','cut')`];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-input-cursor-text"></i> Rename', `apps.explorer.rename('${arg}')`];
+        return 'null';
+    }
+],
+'explorer.file': [
+    arg => {
+        return ['<i class="bi bi-folder2-open"></i> Open (Currently No Effect)', ''];
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-trash3"></i> Delete', `apps.explorer.del('${arg}')`];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text')[0].innerHTML != 'This PC')
+            return ['<i class="bi bi-files"></i> Copy', `apps.explorer.copy_or_cut('${arg}','copy')`];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-scissors"></i> Cut', `apps.explorer.copy_or_cut('${arg}','cut')`];
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-input-cursor-text"></i> Rename', `apps.explorer.rename('${arg}')`];
+        return 'null';
+    }
+],
+'explorer.content': [
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-file-earmark-plus"></i> New File', 'apps.explorer.add($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'New Text Document.txt\')'];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-folder-plus"></i> New Folder', 'apps.explorer.add($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'New Folder\',type=\'files\')'];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-file-earmark-arrow-down"></i> Paste', 'apps.explorer.paste($(\'#win-explorer>.path>.tit\')[0].dataset.path,\'New Folder\',type=\'files\')'];
+        return 'null';
+    },
+    arg => {
+        if ($('#win-explorer>.path>.tit>.path>div.text').length > 1)
+            return ['<i class="bi bi-arrow-clockwise"></i> Refresh', 'apps.explorer.goto($(\'#win-explorer>.path>.tit\')[0].dataset.path, false)'];
+        return ['<i class="bi bi-arrow-clockwise"></i> Refresh', 'apps.explorer.reset()'];
+    }
+],
+'explorer.tab': [
+    arg => {
+        return ['<i class="bi bi-x"></i> Close Tab', `m_tab.close('explorer',${arg})`];
+    }
+],
+'edge.tab': [
+    arg => {
+        return ['<i class="bi bi-pencil-square"></i> Rename Tab', `apps.edge.c_rename(${arg})`];
+    },
+    arg => {
+        return ['<i class="bi bi-x"></i> Close Tab', `m_tab.close('edge',${arg})`];
+    }
+],
+'taskmgr.processes': [
+    arg => {
+        return ['<i class="bi bi-x"></i> End Task', `apps.taskmgr.taskkill('${arg}')`];
+    }
+]
 };
 
 function showcm(e, cl, arg) {
