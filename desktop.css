@@ -1,10 +1,6 @@
 @import "./bootstrap-icons.css";
 @import "./base.css";
 
-/* 注：应用样式请在 /apps/style 中设置，并在 desktop.html 开头引用 */
-
-
-/* 通用颜色配置，分深浅主题 */
 :root {
     --text: #000;
     --text2: #444;
@@ -179,7 +175,6 @@ list:not(.new)>a:active,
 }
 
 
-/*** 以下通用控件 ***/
 
 .input {
     background-color: var(--bg50);
@@ -402,9 +397,6 @@ list>span.focs.cl {
         transform: none;
     }
 }
-
-
-/*** 以下任务栏 ***/
 
 #dock-box {
     position: fixed;
@@ -802,8 +794,6 @@ list>span.focs.cl {
 #copilot-btn.show>img {
     transform: rotate(420deg);
 }
-
-/*** 以下开始等菜单 ***/
 
 #start-menu {
     display: none;
@@ -1508,8 +1498,6 @@ input-before {
     border-bottom: 2px solid;
 }
 
-/*** 以下任务栏各面板 ***/
-
 #datebox,
 #control {
     display: none;
@@ -1716,8 +1704,6 @@ input-before {
     background-color: var(--hover);
 }
 
-/*** 以下桌面 ***/
-
 #desktop {
     position: absolute;
     top: 0;
@@ -1893,9 +1879,6 @@ input-before {
     background-color: var(--hover);
 }
 
-
-/*** 以下右键菜单 ***/
-
 #cm {
     display: none;
     position: absolute;
@@ -1954,8 +1937,6 @@ input-before {
     background-color: var(--hover-b);
 }
 
-/*** 以下下拉菜单 ***/
-
 #dp {
     display: none;
     position: absolute;
@@ -2008,8 +1989,6 @@ input-before {
     background-color: var(--hover-b);
 }
 
-/*** 以下悬停提示 ***/
-
 #descp {
     position: fixed;
     background: var(--cm);
@@ -2033,8 +2012,6 @@ input-before {
 #descp.show-begin {
     display: block;
 }
-
-/*** 以下消息 ***/
 
 .msg {
     background-color: var(--bg50);
@@ -2104,8 +2081,6 @@ input-before {
     padding-left: 10px;
     transition: 100ms;
 }
-
-/*** 以下提示对话框 ***/
 
 #notice-back {
     top: 0;
@@ -2199,8 +2174,6 @@ input-before {
     transform: none;
     opacity: 0.7;
 }
-
-/*** 以下窗口相关 ***/
 
 .window {
     position: absolute;
