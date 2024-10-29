@@ -196,6 +196,10 @@
 					<img src="icon/photoshop.png">
 					<p>Photoshop</p>
 				</a>
+				<a oncontextmenu="return showcm(event, 'smlapp', ['crunchyroll', 'Crunchyroll'])" onclick="openapp('crunchyroll');hide_startmenu();">
+					<img src="icon/crunchyroll.png">
+					<p>Crunchyroll</p>
+				</a>
 			</list>			
 		</div>
 		<div id="s-m-r">
@@ -1949,6 +1953,24 @@
 			<!-- <iframe src="https://coolubg.github.io/coolubg-list/crossy-road" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
 		</div>
 	</div>
+	<div class="window crunchyroll webapp">
+		<div class="resize-bar"></div>
+		<div class="titbar">
+			<img src="icon/crunchyroll.png" class="icon">
+			<p>Crunchyroll</p>
+			<div>
+				<a class="a wbtg red" onclick="hidewin('crunchyroll')"><i class="bi bi-x-lg"></i></a>
+				<a class="a wbtg max" onclick="maxwin('crunchyroll')"><i class="bi bi-app"></i></a>
+				<a class="a wbtg" onclick="minwin('crunchyroll')"><i class="bi bi-dash-lg"></i></a>
+			</div>
+		</div>
+		<div class="loadback">
+			<img src="icon/crunchyroll.png" class="icon">
+		</div>
+		<div class="content" id="win-crunchyroll">
+			<!-- <iframe src="https://www.crunchyroll.com" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
+		</div>
+	</div>
 	<div class="window photoshop webapp">
 		<div class="resize-bar"></div>
 		<div class="titbar">
@@ -1965,60 +1987,6 @@
 		</div>
 		<div class="content" id="win-photoshop">
 			<!-- <iframe src="https://www.photopea.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe> -->
-		</div>
-	<div class="window camera">
-		<div class="resize-bar"></div>
-		<div class="titbar">
-			<img src="icon/camera.svg" class="icon">
-			<p>Camera</p>
-			<div>
-				<a class="a wbtg red" onclick="hidewin('camera')"><i class="bi bi-x-lg"></i></a>
-				<a class="a wbtg max" onclick="maxwin('camera')"><i class="bi bi-app"></i></a>
-				<a class="a wbtg" onclick="minwin('camera')"><i class="bi bi-dash-lg"></i></a>
-			</div>
-		</div>
-		<div class="loadback">
-			<img src="icon/camera.svg" class="icon">
-		</div>
-		<div class="content" id="win-camera">
-			<div class="video">
-				<video></video>
-			</div>
-			<div class="control">
-				<div>
-					<div class="startbutton act" onclick="apps.camera.takePhoto();"></div>
-				</div>
-			</div>
-			<canvas style="display: none;"></canvas>
-			<a style="display: none;"></a>
-		</div>
-	</div>
-	<div class="window camera-notice">
-		<div class="titbar">
-			<img src="icon/camera.svg" class="icon">
-			<p>Camera</p>
-			<div>
-				<a class="a wbtg red" onclick="hidewin('camera-notice');hidewin('camera')"><i
-						class="bi bi-x-lg"></i></a>
-			</div>
-		</div>
-		<div class="loadback">
-			<img src="icon/camera.svg" class="icon">
-		</div>
-		<div class="content" id="win-camera-notice" style="padding: 0px 10px 0px 10px;">
-			<div style="display: flex; width: 100%; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
-				<div
-					style="width: 50px; height: 50px; background-image: url('icon/camera.svg'); background-repeat: no-repeat;">
-				</div>
-			</div>
-			<p>
-				&emsp;&emsp;Welcome to the Camera app!<br />
-				&emsp;&emsp;While using this app, it will request access to your camera (for taking photos and other operations). This app will not upload any of your personal information (including the photos taken) to the server, nor will it disclose it to others.<br />
-			<div class="buttons">
-				<a class="a submit act"
-					onclick="hidewin('camera-notice', 'configs');localStorage.setItem('camera', true);openapp('camera');">Agree and Continue</a>
-				<a class="a cancel act" onclick="hidewin('camera-notice')">Disagree</a>
-			</div>
 		</div>
 	</div>
 				</div>
