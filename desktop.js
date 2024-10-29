@@ -1412,7 +1412,7 @@ let apps = {
     },
     // webapp vscode,
     webapps: {
-        apps: ['vscode', 'minecraft', 'tv', 'crossyroad', 'photoshop', 'crunchyroll'],
+        apps: ['vscode', 'minecraft', 'tv', 'crossyroad', 'photoshop'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1434,14 +1434,6 @@ let apps = {
         },
         load: () => {
             $('#win-photoshop')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.photopea.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
-        }
-    },
-    crunchyroll: {
-        init: () => {
-            return null;
-        },
-        load: () => {
-            $('#win-crunchyroll')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.crunchyroll.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     minecraft: {
@@ -2988,7 +2980,6 @@ let icon = {
     minecraft: 'minecraft.png',
     crossyroad: 'crossyroad.png',
     tv: 'tv.png',
-    crunchyroll: 'crunchyroll.png',
     photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
