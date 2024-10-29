@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('%cWindows 12 网页版(GitHub: tjy-gitnub/win12)', 'background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
+console.log('background-image: linear-gradient(to right, #ad6eca, #3b91d8); border-radius: 8px; font-size: 1.3em; padding: 10px 15px; color: #fff; ');
 
 
 
@@ -1412,7 +1412,7 @@ let apps = {
     },
     // webapp vscode,
     webapps: {
-        apps: ['vscode', 'minecraft', 'tv', 'crossyroad', 'photoshop'],
+        apps: ['vscode', 'minecraft', 'tv', 'crossyroad', 'photoshop', 'crunchyroll'],
         init: () => {
             for (const app of apps.webapps.apps) {
                 apps[app].load();
@@ -1434,6 +1434,14 @@ let apps = {
         },
         load: () => {
             $('#win-photoshop')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.photopea.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
+        }
+    },
+    crunchyroll: {
+        init: () => {
+            return null;
+        },
+        load: () => {
+            $('#win-crunchyroll')[0].insertAdjacentHTML('afterbegin', '<iframe src="https://www.crunchyroll.com/" frameborder="0" style="width: 100%; height: 100%;" loading="lazy"></iframe>');
         }
     },
     minecraft: {
@@ -2980,6 +2988,7 @@ let icon = {
     minecraft: 'minecraft.png',
     crossyroad: 'crossyroad.png',
     tv: 'tv.png',
+    crunchyroll: 'crunchyroll.png',
     photoshop: 'photoshop.png',
     vscode: 'vscode.png',
     // python: 'python.png',
